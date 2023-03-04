@@ -1,8 +1,12 @@
 import {HomePage} from '../../pages/homePage/homePage';
 
-function App(): JSX.Element {
+type AppProps = {
+  offersSum: number;
+}
+function App({offersSum}: AppProps): JSX.Element {
+
   return (
-    <HomePage/>
+    <HomePage offersSum={offersSum}/>
   );
 }
 

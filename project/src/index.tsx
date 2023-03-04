@@ -6,8 +6,10 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
+const offersSum = 100;
+
 root.render(
   <React.StrictMode>
-    <App />
+    <App offersSum={offersSum} />
   </React.StrictMode>,
 );

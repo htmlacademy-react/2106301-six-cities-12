@@ -1,37 +1,51 @@
+import {NavLink} from 'react-router-dom';
+
 export function NavBar() {
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
+            <NavLink to={'/'}
+              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            >
               <span>Paris</span>
-            </a>
+            </NavLink>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
+            <NavLink to={'/'}
+              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            >
               <span>Cologne</span>
-            </a>
+            </NavLink>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
+            <NavLink to={'/'}
+              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            >
               <span>Brussels</span>
-            </a>
+            </NavLink>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item tabs__item--active">
+            <NavLink to={'/'}
+              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            >
               <span>Amsterdam</span>
-            </a>
+            </NavLink>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
+            <NavLink to={'/'}
+              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            >
               <span>Hamburg</span>
-            </a>
+            </NavLink>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
+            <NavLink to={'/'}
+              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            >
               <span>Dusseldorf</span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </section>

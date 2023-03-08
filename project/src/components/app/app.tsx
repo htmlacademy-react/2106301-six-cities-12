@@ -7,6 +7,7 @@ import {TemplatePage} from '../../pages/templatePage/templatePage';
 import {AppRoutes, AuthorizationStatus, CityListNames} from '../../consts';
 import {CityList} from '../cityList/cityList';
 import {PrivateRoute} from '../privateRoute/privateRoute';
+import {NotFoundPage} from '../../pages/notFoundPage/notFoundPage';
 
 
 function App(): JSX.Element {
@@ -23,6 +24,7 @@ function App(): JSX.Element {
           <Route path={'dusseldorf'} element={<CityList city={CityListNames.Dusseldorf}/>}/>
         </Route>
         <Route path={AppRoutes.Room} element={<OfferPage/>}/>
+        <Route path={AppRoutes.NotFound} element={<NotFoundPage/>}/>
       </Route>
       <Route path={AppRoutes.Login} element={<LoginPage/>}/>
       <Route

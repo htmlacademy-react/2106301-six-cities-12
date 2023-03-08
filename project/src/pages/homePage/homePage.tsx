@@ -1,4 +1,3 @@
-import {Header} from '../../components/header/header';
 import {NavBar} from '../../components/navBar/navBar';
 import {CityCard} from '../../components/cityCard/cityCard';
 
@@ -8,7 +7,6 @@ type HomePageProps = {
 export function HomePage ({offersSum}: HomePageProps) {
   return (
     <div className="page page--gray page--main">
-      <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <NavBar/>

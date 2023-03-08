@@ -1,7 +1,17 @@
 import {NavBar} from '../../components/navBar/navBar';
-import {Outlet} from 'react-router-dom';
+import {Outlet, useLocation, useNavigate} from 'react-router-dom';
+import {useEffect} from 'react';
 
 export function HomePage () {
+  const location = useLocation();
+  const redirect = useNavigate();
+
+  useEffect(() => {
+    if(location.pathname === '/') {
+      redirect('/paris');
+    }
+  }, []);
+
   return (
     <div className="page page--gray page--main">
       <main className="page__main page__main--index">

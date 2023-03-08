@@ -15,7 +15,7 @@ function App(): JSX.Element {
     <Routes>
       <Route path={AppRoutes.Main} element={<TemplatePage/>}>
         <Route path={AppRoutes.Main} element={<HomePage/>}>
-          <Route path={'/'} element={<CityList city={CityListNames.Paris}/>}/>
+          <Route path={'paris'} element={<CityList city={CityListNames.Paris}/>}/>
           <Route path={'cologne'} element={<CityList city={CityListNames.Cologne}/>}/>
           <Route path={'brussels'} element={<CityList city={CityListNames.Brussels}/>}/>
           <Route path={'amsterdam'} element={<CityList city={CityListNames.Amsterdam}/>}/>

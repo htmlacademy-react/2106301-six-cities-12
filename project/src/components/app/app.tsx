@@ -4,9 +4,9 @@ import {LoginPage} from '../../pages/loginPage/loginPage';
 import {OfferPage} from '../../pages/offerPage/offerPage';
 import {FavoritesPage} from '../../pages/favoritesPage/favoritesPage';
 import {TemplatePage} from '../../pages/templatePage/templatePage';
-import {AppRoutes} from '../../consts';
+import {AppRoutes, AuthorizationStatus, CityListNames} from '../../consts';
 import {CityList} from '../cityList/cityList';
-import {CityListNames} from '../../consts';
+import {PrivateRoute} from '../privateRoute/privateRoute';
 
 
 function App(): JSX.Element {
@@ -22,11 +22,17 @@ function App(): JSX.Element {
           <Route path={'hamburg'} element={<CityList city={CityListNames.Hamburg}/>}/>
           <Route path={'dusseldorf'} element={<CityList city={CityListNames.Dusseldorf}/>}/>
         </Route>
-        <Route path={AppRoutes.Login} element={<LoginPage/>}/>
         <Route path={AppRoutes.Room} element={<OfferPage/>}/>
-        <Route path={AppRoutes.Favorites} element={<FavoritesPage/>}/>
-        <Route path={AppRoutes.NotFound} element={<HomePage/>}/>
       </Route>
+      <Route path={AppRoutes.Login} element={<LoginPage/>}/>
+      <Route
+        path={AppRoutes.Favorites}
+        element={
+          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <FavoritesPage/>
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }

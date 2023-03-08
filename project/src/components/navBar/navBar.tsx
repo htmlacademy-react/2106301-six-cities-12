@@ -13,35 +13,35 @@ export function NavBar() {
             </NavLink>
           </li>
           <li className="locations__item">
-            <NavLink to={'/'}
+            <NavLink to={'cologne'}
               className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
             >
               <span>Cologne</span>
             </NavLink>
           </li>
           <li className="locations__item">
-            <NavLink to={'/'}
+            <NavLink to={'brussels'}
               className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
             >
               <span>Brussels</span>
             </NavLink>
           </li>
           <li className="locations__item">
-            <NavLink to={'/'}
+            <NavLink to={'amsterdam'}
               className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
             >
               <span>Amsterdam</span>
             </NavLink>
           </li>
           <li className="locations__item">
-            <NavLink to={'/'}
+            <NavLink to={'hamburg'}
               className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
             >
               <span>Hamburg</span>
             </NavLink>
           </li>
           <li className="locations__item">
-            <NavLink to={'/'}
+            <NavLink to={'dusseldorf'}
               className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
             >
               <span>Dusseldorf</span>

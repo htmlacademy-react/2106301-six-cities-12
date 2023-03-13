@@ -1,41 +1,41 @@
-import {Header} from '../../components/header/header';
+import {useParams} from 'react-router-dom';
+import {Offer} from '../../types/offer';
 
-export function OfferPage() {
+type OfferPageProps = {
+  offers: Offer[];
+}
+export function OfferPage({offers}: OfferPageProps) {
+  const roomNumber = useParams()
+  const filterRoom = offers.filter(offer => offer.id.toString() === roomNumber.id)
+  // Уважаемы наставник, я понимаю что это какой то костыль
+  // Очень прошу вас дать свой комментарий по этому поводу
+  // Или подсказать как это сделать правильнее =)
+  // Заранее спасибо
+  const mainRoom = filterRoom[0]
+
+
   return (
     <div className="page">
-      <Header/>
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
+            {/* TODO Допилить логику чтобы показывалось только 6 фоток */}
             <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="/img/room.jpg" alt="studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="/img/apartment-01.jpg" alt="studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="/img/apartment-02.jpg" alt="studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="/img/apartment-03.jpg" alt="studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="/img/studio-01.jpg" alt="studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="/img/apartment-01.jpg" alt="studio"/>
-              </div>
+              {mainRoom.images.map(image => {
+                return(
+                  <div key={image} className="property__image-wrapper">
+                    <img className="property__image" src={image} alt="studio"/>
+                  </div>
+                )
+              })}
             </div>
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              <div className="property__mark">
-                <span>Premium</span>
-              </div>
+              {mainRoom.isPremium ? <div className="property__mark"><span>Premium</span></div> : null}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
+                  {mainRoom.title}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -49,80 +49,42 @@ export function OfferPage() {
                   <span style={{width: '80%'}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{mainRoom.rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Apartment
+                  {mainRoom.type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  {mainRoom.bedrooms} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max {mainRoom.maxAdults} adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;120</b>
+                <b className="property__price-value">&euro;{mainRoom.price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
+                  {mainRoom.goods.map(good => <li key={good} className="property__inside-item">{good}</li>)}
                 </ul>
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="/img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar"/>
+                    <img className="property__avatar user__avatar" src={mainRoom.host.avatarUrl} width="74" height="74" alt="Host avatar"/>
                   </div>
                   <span className="property__user-name">
-                    Angelina
+                    {mainRoom.host.name}
                   </span>
-                  <span className="property__user-status">
-                    Pro
-                  </span>
+                  {mainRoom.host.isPro ? <span className="property__user-status">Pro</span> : null}
                 </div>
                 <div className="property__description">
-                  <p className="property__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The
-                    building is green and from 18th century.
-                  </p>
-                  <p className="property__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where
-                    the bustle of the city comes to rest in this alley flowery and colorful.
-                  </p>
+                  <p className="property__text">{mainRoom.description}</p>
                 </div>
               </div>
               <section className="property__reviews reviews">
@@ -209,7 +171,7 @@ export function OfferPage() {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              // TODO Тут должены бать карточки ближайших предложений
+              {/*TODO Тут должены бать карточки ближайших предложений*/}
             </div>
           </section>
         </div>

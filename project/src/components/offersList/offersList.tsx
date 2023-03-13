@@ -1,5 +1,5 @@
 import {CityCard} from '../cityCard/cityCard';
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {Offer} from '../../types/offer';
 
 
@@ -15,6 +15,10 @@ export function OffersList({city, offersList}: CityListProps) {
   const dropDownHandle = () => {
     setOpenDropDown(!openDropDown);
   };
+
+  const generateOffersList = offersList.map(offer => {
+    return <CityCard key={offer.id} offer={offer}/>
+  })
 
   return (
     <div className="cities">
@@ -45,11 +49,7 @@ export function OffersList({city, offersList}: CityListProps) {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            <CityCard/>
-            <CityCard/>
-            <CityCard/>
-            <CityCard/>
-            <CityCard/>
+            {generateOffersList}
           </div>
         </section>
         <div className="cities__right-section">

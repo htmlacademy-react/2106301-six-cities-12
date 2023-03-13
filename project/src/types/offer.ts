@@ -1,5 +1,5 @@
 export type Offer = {
-  bedrooms: number
+  bedrooms: number;
   city: {
     location: {
       latitude: number

@@ -1,11 +1,14 @@
 import {CityCard} from '../cityCard/cityCard';
 import {useState} from 'react';
+import {Offer} from '../../types/offer';
+
 
 type CityListProps = {
   city: string;
+  offersList: Offer[];
 }
 
-export function CityList({city}: CityListProps) {
+export function OffersList({city, offersList}: CityListProps) {
 
   const [openDropDown, setOpenDropDown] = useState(false);
 

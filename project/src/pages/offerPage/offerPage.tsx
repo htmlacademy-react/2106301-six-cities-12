@@ -1,5 +1,4 @@
 import {Header} from '../../components/header/header';
-import {CityCard} from '../../components/cityCard/cityCard';
 
 export function OfferPage() {
   return (
@@ -210,9 +209,7 @@ export function OfferPage() {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <CityCard/>
-              <CityCard/>
-              <CityCard/>
+              // TODO Тут должены бать карточки ближайших предложений
             </div>
           </section>
         </div>

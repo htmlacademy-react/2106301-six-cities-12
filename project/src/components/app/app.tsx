@@ -26,16 +26,16 @@ function App(): JSX.Element {
         </Route>
         <Route path={AppRoutes.Room} element={<OfferPage offers={offers}/>}/>
         <Route path={AppRoutes.NotFound} element={<NotFoundPage/>}/>
+        <Route
+          path={AppRoutes.Favorites}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <FavoritesPage offers={offers}/>
+            </PrivateRoute>
+          }
+        />
       </Route>
       <Route path={AppRoutes.Login} element={<LoginPage/>}/>
-      <Route
-        path={AppRoutes.Favorites}
-        element={
-          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-            <FavoritesPage/>
-          </PrivateRoute>
-        }
-      />
     </Routes>
   );
 }

@@ -1,5 +1,4 @@
 import {Link} from 'react-router-dom';
-import {AppRoutes} from '../../consts';
 import {Offer} from '../../types/offer';
 import {useState} from 'react';
 
@@ -35,7 +34,7 @@ export function CityCard ({offer}: CityCardProps) {
     >
       {isPremium ? premium() : null}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={AppRoutes.Main}>
+        <Link to={`/room/${offer.id}`}>
           <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="place"/>
         </Link>
       </div>
@@ -59,7 +58,7 @@ export function CityCard ({offer}: CityCardProps) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoutes.Main}>{offer.title}</Link>
+          <Link to={`/room/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>

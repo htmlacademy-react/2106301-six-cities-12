@@ -24,7 +24,7 @@ function App(): JSX.Element {
           <Route path={'hamburg'} element={<OffersList city={CityListNames.Hamburg} offersList={offers}/>}/>
           <Route path={'dusseldorf'} element={<OffersList city={CityListNames.Dusseldorf} offersList={offers}/>}/>
         </Route>
-        <Route path={AppRoutes.Room} element={<OfferPage/>}/>
+        <Route path={AppRoutes.Room} element={<OfferPage offers={offers}/>}/>
         <Route path={AppRoutes.NotFound} element={<NotFoundPage/>}/>
       </Route>
       <Route path={AppRoutes.Login} element={<LoginPage/>}/>

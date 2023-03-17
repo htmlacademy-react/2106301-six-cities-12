@@ -8,10 +8,6 @@ type OfferPageProps = {
 export function OfferPage({offers}: OfferPageProps) {
   const roomNumber = useParams()
   const filterRoom = offers.filter(offer => offer.id.toString() === roomNumber.id)
-  // Уважаемы наставник, я понимаю что это какой то костыль
-  // Очень прошу вас дать свой комментарий по этому поводу
-  // Или подсказать как это сделать правильнее =)
-  // Заранее спасибо
   const mainRoom = filterRoom[0]
 
 

@@ -9,8 +9,6 @@ export function ReviewOfferForm () {
     text: ''
   })
 
-  console.log(reviewAnswer)
-
   return(
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>

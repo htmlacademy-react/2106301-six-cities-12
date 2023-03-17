@@ -17,6 +17,7 @@ export function OfferPage({offers}: OfferPageProps) {
         <section className="property">
           <div className="property__gallery-container container">
             {/* TODO Допилить логику чтобы показывалось только 6 фоток */}
+            {/* TODO Не забыть убрать */}
             <div className="property__gallery">
               {mainRoom.images.map(image => {
                 return(

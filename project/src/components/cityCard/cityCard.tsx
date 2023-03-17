@@ -3,28 +3,28 @@ import {Offer} from '../../types/offer';
 import {useState} from 'react';
 
 type CityCardProps = {
-  offer: Offer
+  offer: Offer;
 }
 
 export function CityCard ({offer}: CityCardProps) {
-  const [isPremium, setIsPremium] = useState(offer.isPremium)
-  const [onFocus, setOnFocus] = useState(0)
+  // eslint-disable-next-line
+  const [isPremium, setIsPremium] = useState(offer.isPremium);
+  // eslint-disable-next-line
+  const [onFocus, setOnFocus] = useState(0);
 
   const onFocusHandle = () => {
-    setOnFocus(offer.id)
-  }
+    setOnFocus(offer.id);
+  };
 
   const unFocusHandle = () => {
-    setOnFocus(0)
-  }
+    setOnFocus(0);
+  };
 
-  const premium = () => {
-    return(
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
-    )
-  }
+  const premium = () => (
+    <div className="place-card__mark">
+      <span>Premium</span>
+    </div>
+  );
 
   return (
     <article

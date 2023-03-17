@@ -16,9 +16,7 @@ export function OffersList({city, offersList}: CityListProps) {
     setOpenDropDown(!openDropDown);
   };
 
-  const generateOffersList = offersList.map(offer => {
-    return <CityCard key={offer.id} offer={offer}/>
-  })
+  const generateOffersList = offersList.map((offer) => <CityCard key={offer.id} offer={offer}/>);
 
   return (
     <div className="cities">

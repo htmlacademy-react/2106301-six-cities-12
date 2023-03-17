@@ -5,10 +5,11 @@ import {ReviewOfferForm} from '../../components/reviewOfferForm/reviewOfferForm'
 type OfferPageProps = {
   offers: Offer[];
 }
+
 export function OfferPage({offers}: OfferPageProps) {
-  const roomNumber = useParams()
-  const filterRoom = offers.filter(offer => offer.id.toString() === roomNumber.id)
-  const mainRoom = filterRoom[0]
+  const roomNumber = useParams();
+  const filterRoom = offers.filter((offer) => offer.id.toString() === roomNumber.id);
+  const mainRoom = filterRoom[0];
 
 
   return (
@@ -19,13 +20,11 @@ export function OfferPage({offers}: OfferPageProps) {
             {/* TODO Допилить логику чтобы показывалось только 6 фоток */}
             {/* TODO Не забыть убрать */}
             <div className="property__gallery">
-              {mainRoom.images.map(image => {
-                return(
-                  <div key={image} className="property__image-wrapper">
-                    <img className="property__image" src={image} alt="studio"/>
-                  </div>
-                )
-              })}
+              {mainRoom.images.map((image) => (
+                <div key={image} className="property__image-wrapper">
+                  <img className="property__image" src={image} alt="studio"/>
+                </div>
+              ))}
             </div>
           </div>
           <div className="property__container container">
@@ -67,14 +66,20 @@ export function OfferPage({offers}: OfferPageProps) {
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {mainRoom.goods.map(good => <li key={good} className="property__inside-item">{good}</li>)}
+                  {mainRoom.goods.map((good) => <li key={good} className="property__inside-item">{good}</li>)}
                 </ul>
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={mainRoom.host.avatarUrl} width="74" height="74" alt="Host avatar"/>
+                    <img
+                      className="property__avatar user__avatar"
+                      src={mainRoom.host.avatarUrl}
+                      width="74"
+                      height="74"
+                      alt="Host avatar"
+                    />
                   </div>
                   <span className="property__user-name">
                     {mainRoom.host.name}
@@ -91,7 +96,13 @@ export function OfferPage({offers}: OfferPageProps) {
                   <li className="reviews__item">
                     <div className="reviews__user user">
                       <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="/img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar"/>
+                        <img
+                          className="reviews__avatar user__avatar"
+                          src="/img/avatar-max.jpg"
+                          width="54"
+                          height="54"
+                          alt="Reviews avatar"
+                        />
                       </div>
                       <span className="reviews__user-name">
                         Max

@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 type Test = {
-  rating: number,
-  text: string
+  rating: number;
+  text: string;
 }
 export function ReviewOfferForm () {
   const [reviewAnswer, setReviewAnswer] = useState<Test>({
     rating: 0,
     text: ''
-  })
+  });
 
   return(
     <form className="reviews__form form" action="#" method="post">
@@ -89,7 +89,7 @@ export function ReviewOfferForm () {
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={reviewAnswer.text}
-        onChange={(event) => setReviewAnswer({...reviewAnswer, text: event.currentTarget.value})  }
+        onChange={(event) => setReviewAnswer({...reviewAnswer, text: event.currentTarget.value})}
       >
       </textarea>
       <div className="reviews__button-wrapper">
@@ -101,5 +101,5 @@ export function ReviewOfferForm () {
         </button>
       </div>
     </form>
-  )
+  );
 }

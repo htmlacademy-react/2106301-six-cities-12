@@ -1,8 +1,8 @@
-import {Link} from "react-router-dom";
-import {Offer} from "../../types/offer";
+import {Link} from 'react-router-dom';
+import {Offer} from '../../types/offer';
 
 type FavoritesCardProps = {
-  offer: Offer
+  offer: Offer;
 }
 
 export function FavoritesCard ({offer}: FavoritesCardProps) {
@@ -45,5 +45,5 @@ export function FavoritesCard ({offer}: FavoritesCardProps) {
         <p className="place-card__type">{offer.type}</p>
       </div>
     </article>
-  )
+  );
 }

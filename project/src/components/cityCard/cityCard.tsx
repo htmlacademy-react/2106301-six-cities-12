@@ -1,21 +1,47 @@
 import {Link} from 'react-router-dom';
-import {AppRoutes} from '../../consts';
+import {Offer} from '../../types/offer';
+import {useState} from 'react';
 
-export function CityCard () {
+type CityCardProps = {
+  offer: Offer;
+}
+
+export function CityCard ({offer}: CityCardProps) {
+  // eslint-disable-next-line
+  const [isPremium, setIsPremium] = useState(offer.isPremium);
+  // eslint-disable-next-line
+  const [onFocus, setOnFocus] = useState(0);
+
+  const onFocusHandle = () => {
+    setOnFocus(offer.id);
+  };
+
+  const unFocusHandle = () => {
+    setOnFocus(0);
+  };
+
+  const premium = () => (
+    <div className="place-card__mark">
+      <span>Premium</span>
+    </div>
+  );
+
   return (
-    <article className="cities__card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+    <article
+      className="cities__card place-card"
+      onMouseEnter={onFocusHandle}
+      onMouseLeave={unFocusHandle}
+    >
+      {isPremium ? premium() : null}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={AppRoutes.Main}>
-          <img className="place-card__image" src="/img/apartment-01.jpg" width="260" height="200" alt="place"/>
+        <Link to={`/room/${offer.id}`}>
+          <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="place"/>
         </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;120</b>
+            <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className="place-card__bookmark-button button" type="button">
@@ -32,9 +58,9 @@ export function CityCard () {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoutes.Main}>Beautiful &amp; luxurious apartment at great location</Link>
+          <Link to={`/room/${offer.id}`}>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">Apartment</p>
+        <p className="place-card__type">{offer.type}</p>
       </div>
     </article>
   );

@@ -1,6 +1,7 @@
 import {CityCard} from '../cityCard/cityCard';
 import React, {useState} from 'react';
 import {Offer} from '../../types/offer';
+import {Map} from "../map/map";
 
 
 type CityListProps = {
@@ -51,7 +52,9 @@ export function OffersList({city, offersList}: CityListProps) {
           </div>
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map"></section>
+          <section className="cities__map map">
+            <Map offers={offersList}/>
+          </section>
         </div>
       </div>
     </div>

@@ -53,7 +53,9 @@ export function OffersList({city, offersList}: CityListProps) {
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
-            <Map offers={offersList}/>
+            <div style={{height: '100%'}}>
+              <Map offers={offersList}/>
+            </div>
           </section>
         </div>
       </div>

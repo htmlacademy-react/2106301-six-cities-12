@@ -1,53 +1,42 @@
-import {useEffect, useRef} from 'react';
-import useMap from "../../hooks/useMap";
-import {icon, marker} from "leaflet";
-import {URL_MARKER_CURRENT, URL_MARKER_DEFAULT} from "../../consts";
-import {Locations, Offer} from "../../types/offer";
+import {Locations, Offer} from '../../types/offer';
+import './map.css';
 import 'leaflet/dist/leaflet.css';
+import {MapContainer, Marker, TileLayer} from 'react-leaflet';
+import {Icon} from 'leaflet';
 
 type MapProps = {
-  offers: Offer[]
+  offers: Offer[];
 }
 
 export function Map({offers}: MapProps) {
-  const mapRef = useRef(null)
-  const location: Locations = []
-  offers.map(el => location.push(el.city.location))
+  const cityLocation: Locations = [];
 
-  const city = {
-    latitude: 51.225402,
-    longitude: 6.776314,
-    zoom: 13
-  }
+  offers.map((offer) => cityLocation.push(offer.location));
 
-  const map = useMap(mapRef, city)
-
-  const defaultCustomIcon = icon({
-    iconUrl: URL_MARKER_DEFAULT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
-
-  const currentCustomIcon = icon({
-    iconUrl: URL_MARKER_CURRENT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
-
-  useEffect(() => {
-    if (map) {
-      location.forEach((location) => {
-        marker({
-          lat: location.latitude,
-          lng: location.longitude,
-        }, {
-          icon: defaultCustomIcon,
-        })
-          .addTo(map);
-      });
+  const dusseldorf = {
+    name: 'Dusseldorf',
+    location: {
+      'latitude': 51.225402,
+      'longitude': 6.776314,
+      'zoom': 13
     }
-  }, [map, location]);
+  };
+
+  const customIcon = new Icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/2494/2494112.png',
+    iconSize: [38, 38]
+  });
+
+
   return (
-    <div style={{height: '100%'}} ref={mapRef}></div>
-  )
+    <MapContainer center={[dusseldorf.location.latitude, dusseldorf.location.longitude]} zoom={13}>
+      <TileLayer
+        attribution={'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'}
+        url={'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'}
+      />
+      {cityLocation.map((city) => (
+        <Marker key={city.longitude} position={[city.latitude, city.longitude]} icon={customIcon}></Marker>
+      ))}
+    </MapContainer>
+  );
 }

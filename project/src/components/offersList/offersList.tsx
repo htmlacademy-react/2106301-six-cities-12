@@ -1,7 +1,7 @@
 import {CityCard} from '../cityCard/cityCard';
 import React, {useState} from 'react';
 import {Offer} from '../../types/offer';
-import {Map} from "../map/map";
+import {Map} from '../map/map';
 
 
 type CityListProps = {

@@ -11,9 +11,7 @@ export function Review () {
             alt="Reviews avatar"
           />
         </div>
-        <span className="reviews__user-name">
-                        Max
-                      </span>
+        <span className="reviews__user-name">Max</span>
       </div>
       <div className="reviews__info">
         <div className="reviews__rating rating">

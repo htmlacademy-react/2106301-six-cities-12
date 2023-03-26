@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-type Test = {
+type ReviewOfferFormProps = {
   rating: number;
   text: string;
 }
 export function ReviewOfferForm () {
-  const [reviewAnswer, setReviewAnswer] = useState<Test>({
+  const [reviewAnswer, setReviewAnswer] = useState<ReviewOfferFormProps>({
     rating: 0,
     text: ''
   });

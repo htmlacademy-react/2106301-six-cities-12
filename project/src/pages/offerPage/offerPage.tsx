@@ -2,6 +2,7 @@ import {useParams} from 'react-router-dom';
 import {Offer} from '../../types/offer';
 import {ReviewOfferForm} from '../../components/reviewOfferForm/reviewOfferForm';
 import {ReviewList} from '../../components/reviewList/reviewList';
+import {Map} from '../../components/map/map';
 
 type OfferPageProps = {
   offers: Offer[];
@@ -97,7 +98,9 @@ export function OfferPage({offers}: OfferPageProps) {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <section className="property__map map">
+            <Map offers={offers}/>
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">

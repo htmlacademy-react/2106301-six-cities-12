@@ -40,4 +40,5 @@ export type Location = {
 }
 
 export type Locations = Location[]
+export type Offers = Offer[]
 

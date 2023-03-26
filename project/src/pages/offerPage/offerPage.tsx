@@ -3,6 +3,7 @@ import {Offer} from '../../types/offer';
 import {ReviewOfferForm} from '../../components/reviewOfferForm/reviewOfferForm';
 import {ReviewList} from '../../components/reviewList/reviewList';
 import {Map} from '../../components/map/map';
+import {NearPlacesList} from '../../components/nearPlacesList/nearPlacesList';
 
 type OfferPageProps = {
   offers: Offer[];
@@ -103,12 +104,7 @@ export function OfferPage({offers}: OfferPageProps) {
           </section>
         </section>
         <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <div className="near-places__list places__list">
-              {/*TODO Тут должены бать карточки ближайших предложений*/}
-            </div>
-          </section>
+          <NearPlacesList offers={offers}/>
         </div>
       </main>
     </div>

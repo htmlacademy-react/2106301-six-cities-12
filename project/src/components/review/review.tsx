@@ -27,5 +27,5 @@ export function Review () {
         <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
       </div>
     </li>
-  )
+  );
 }

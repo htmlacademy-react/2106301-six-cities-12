@@ -10,7 +10,7 @@ const initialState = {
   offers: emptyOfferList
 }
 
-export const reduser = createReducer(initialState, (builder) => {
+export const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(addCity, (state) => {
       state.city = 'Paris'
@@ -19,6 +19,8 @@ export const reduser = createReducer(initialState, (builder) => {
       state.offers = offers
     })
 })
+
+
 
 
 

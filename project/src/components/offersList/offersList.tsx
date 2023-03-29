@@ -1,23 +1,28 @@
 import {CityCard} from '../cityCard/cityCard';
 import React, {useState} from 'react';
-import {Offer} from '../../types/offer';
 import {Map} from '../map/map';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {addOffers} from "../../store/actions";
 
 
 type CityListProps = {
   city: string;
-  offersList: Offer[];
 }
 
-export function OffersList({city, offersList}: CityListProps) {
+export function OffersList({city}: CityListProps) {
 
   const [openDropDown, setOpenDropDown] = useState(false);
+  const dispatch = useAppDispatch()
 
   const dropDownHandle = () => {
     setOpenDropDown(!openDropDown);
   };
 
-  const generateOffersList = offersList.map((offer) => <CityCard key={offer.id} offer={offer}/>);
+  dispatch(addOffers());
+
+  const offers = useAppSelector((state) => state.offers);
+
+  const generateOffersList = offers.map((offer) => <CityCard key={offer.id} offer={offer}/>);
 
   return (
     <div className="cities">
@@ -54,7 +59,7 @@ export function OffersList({city, offersList}: CityListProps) {
         <div className="cities__right-section">
           <section className="cities__map map">
             <div style={{height: '100%'}}>
-              <Map offers={offersList}/>
+              <Map offers={offers}/>
             </div>
           </section>
         </div>

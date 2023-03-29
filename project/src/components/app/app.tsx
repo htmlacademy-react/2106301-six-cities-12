@@ -17,12 +17,12 @@ function App(): JSX.Element {
     <Routes>
       <Route path={AppRoutes.Main} element={<TemplatePage/>}>
         <Route path={AppRoutes.Main} element={<HomePage/>}>
-          <Route path={'paris'} element={<OffersList city={CityListNames.Paris} offersList={offers}/>}/>
-          <Route path={'cologne'} element={<OffersList city={CityListNames.Cologne} offersList={offers}/>}/>
-          <Route path={'brussels'} element={<OffersList city={CityListNames.Brussels} offersList={offers}/>}/>
-          <Route path={'amsterdam'} element={<OffersList city={CityListNames.Amsterdam} offersList={offers}/>}/>
-          <Route path={'hamburg'} element={<OffersList city={CityListNames.Hamburg} offersList={offers}/>}/>
-          <Route path={'dusseldorf'} element={<OffersList city={CityListNames.Dusseldorf} offersList={offers}/>}/>
+          <Route path={'paris'} element={<OffersList city={CityListNames.Paris} />}/>
+          <Route path={'cologne'} element={<OffersList city={CityListNames.Cologne} />}/>
+          <Route path={'brussels'} element={<OffersList city={CityListNames.Brussels} />}/>
+          <Route path={'amsterdam'} element={<OffersList city={CityListNames.Amsterdam} />}/>
+          <Route path={'hamburg'} element={<OffersList city={CityListNames.Hamburg} />}/>
+          <Route path={'dusseldorf'} element={<OffersList city={CityListNames.Dusseldorf} />}/>
         </Route>
         <Route path={AppRoutes.Room} element={<OfferPage offers={offers}/>}/>
         <Route path={AppRoutes.NotFound} element={<NotFoundPage/>}/>

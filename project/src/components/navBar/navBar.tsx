@@ -1,51 +1,61 @@
-import {NavLink} from 'react-router-dom';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {setCity} from '../../store/actions';
 
 export function NavBar() {
+  const dispatch = useAppDispatch();
+  const city = useAppSelector((state) => state.city);
+
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
           <li className="locations__item">
-            <NavLink to={'paris'}
-              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            <span
+              className={city === 'Paris' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+              onClick={(event) => dispatch(setCity('Paris'))}
             >
-              <span>Paris</span>
-            </NavLink>
+              Paris
+            </span>
           </li>
           <li className="locations__item">
-            <NavLink to={'cologne'}
-              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            <span
+              className={city === 'Cologne' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+              onClick={(event) => dispatch(setCity('Cologne'))}
             >
-              <span>Cologne</span>
-            </NavLink>
+              Cologne
+            </span>
           </li>
           <li className="locations__item">
-            <NavLink to={'brussels'}
-              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            <span
+              className={city === 'Brussels' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+              onClick={(event) => dispatch(setCity('Brussels'))}
             >
-              <span>Brussels</span>
-            </NavLink>
+              Brussels
+            </span>
           </li>
           <li className="locations__item">
-            <NavLink to={'amsterdam'}
-              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            <span
+              className={city === 'Amsterdam' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+              onClick={(event) => dispatch(setCity('Amsterdam'))}
             >
-              <span>Amsterdam</span>
-            </NavLink>
+              Amsterdam
+            </span>
           </li>
           <li className="locations__item">
-            <NavLink to={'hamburg'}
-              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            <span
+              className={city === 'Hamburg' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+              onClick={(event) => dispatch(setCity('Hamburg'))}
             >
-              <span>Hamburg</span>
-            </NavLink>
+              Hamburg
+            </span>
           </li>
           <li className="locations__item">
-            <NavLink to={'dusseldorf'}
-              className={({isActive}) => isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+            <span
+              className={city === 'Dusseldorf' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
+              onClick={(event) => dispatch(setCity('Dusseldorf'))}
             >
-              <span>Dusseldorf</span>
-            </NavLink>
+              Dusseldorf
+            </span>
           </li>
         </ul>
       </section>

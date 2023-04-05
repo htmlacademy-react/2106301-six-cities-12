@@ -2,7 +2,7 @@ import {CityCard} from '../cityCard/cityCard';
 import React, {useState} from 'react';
 import {Map} from '../map/map';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {addOffers} from '../../store/actions';
+import {setOffers} from '../../store/actions';
 
 
 type CityListProps = {
@@ -18,7 +18,7 @@ export function OffersList({city}: CityListProps) {
     setOpenDropDown(!openDropDown);
   };
 
-  dispatch(addOffers());
+  dispatch(setOffers);
 
   const offers = useAppSelector((state) => state.offers);
 

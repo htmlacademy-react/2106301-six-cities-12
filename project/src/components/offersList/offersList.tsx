@@ -1,26 +1,23 @@
 import {CityCard} from '../cityCard/cityCard';
 import React, {useState} from 'react';
 import {Map} from '../map/map';
-import {useAppDispatch, useAppSelector} from '../../hooks';
-import {setOffers} from '../../store/actions';
+import {Offers} from '../../types/offer';
 
 
 type CityListProps = {
   city: string;
+  offers: Offers;
 }
 
-export function OffersList({city}: CityListProps) {
+export function OffersList({city, offers}: CityListProps) {
 
   const [openDropDown, setOpenDropDown] = useState(false);
-  const dispatch = useAppDispatch();
 
   const dropDownHandle = () => {
     setOpenDropDown(!openDropDown);
   };
 
-  dispatch(setOffers);
-
-  const offers = useAppSelector((state) => state.offers);
+  console.log(offers)
 
   const generateOffersList = offers.map((offer) => <CityCard key={offer.id} offer={offer}/>);
 

@@ -1,23 +1,24 @@
 import {NavBar} from '../../components/navBar/navBar';
-// import {Outlet} from 'react-router-dom';
-
-import {Cities} from '../../types/offer';
 import {OffersList} from '../../components/offersList/offersList';
-import {useAppSelector} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useEffect} from 'react';
+import {setOffers} from '../../store/actions';
 
-type HomePageProps = {
-  cities: Cities;
-}
-
-export function HomePage ({cities}: HomePageProps) {
+export function HomePage () {
+  const dispatch = useAppDispatch();
   const city = useAppSelector((state) => state.city);
+  const offers = useAppSelector((state) => state.offers);
+
+  useEffect(() => {
+    dispatch(setOffers);
+  }, [city]);
 
   return (
     <div className="page page--gray page--main">
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <NavBar/>
-        <OffersList city={city}/>
+        <OffersList city={city} offers={offers}/>
       </main>
     </div>
   );

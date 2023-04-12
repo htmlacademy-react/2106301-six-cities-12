@@ -1,30 +1,31 @@
 import {CityCard} from '../cityCard/cityCard';
 import React, {useState} from 'react';
-import {Offer} from '../../types/offer';
 import {Map} from '../map/map';
+import {Offers} from '../../types/offer';
 
 
 type CityListProps = {
   city: string;
-  offersList: Offer[];
+  offers: Offers;
 }
 
-export function OffersList({city, offersList}: CityListProps) {
+export function OffersList({city, offers}: CityListProps) {
 
   const [openDropDown, setOpenDropDown] = useState(false);
 
   const dropDownHandle = () => {
     setOpenDropDown(!openDropDown);
   };
+  const currentOffers = offers.filter((offer) => offer.city.name === city);
+  const generateOffersList = currentOffers.map((offer) => <CityCard key={offer.id} offer={offer}/>);
 
-  const generateOffersList = offersList.map((offer) => <CityCard key={offer.id} offer={offer}/>);
 
   return (
     <div className="cities">
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">100 places to stay in {city}</b>
+          <b className="places__found">{currentOffers.length} places to stay in {city}</b>
           <form className="places__sorting" action="#" method="get">
             <span className="places__sorting-caption">Sort by</span>
             <span
@@ -54,7 +55,7 @@ export function OffersList({city, offersList}: CityListProps) {
         <div className="cities__right-section">
           <section className="cities__map map">
             <div style={{height: '100%'}}>
-              <Map offers={offersList}/>
+              <Map offers={currentOffers}/>
             </div>
           </section>
         </div>

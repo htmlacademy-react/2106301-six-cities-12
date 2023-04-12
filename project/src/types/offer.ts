@@ -39,6 +39,16 @@ export type Location = {
     zoom: number;
 }
 
+export type Cities = {
+  Paris: 'Paris';
+  Cologne: 'Cologne';
+  Brussels: 'Brussels';
+  Amsterdam: 'Amsterdam';
+  Hamburg: 'Hamburg';
+  Dusseldorf: 'Dusseldorf';
+}
+
 export type Locations = Location[]
 export type Offers = Offer[]
+
 

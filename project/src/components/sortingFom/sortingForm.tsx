@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {setSortOption} from "../../store/actions";
 
 export function SortingForm() {
   const [openDropDown, setOpenDropDown] = useState(false);
-  const [sortForm, setSortForm] = useState('Popular');
+  const dispatch = useAppDispatch()
+  const sortOption = useAppSelector((state) => state.sortOption)
 
   const dropDownHandle = () => {
     setOpenDropDown(!openDropDown);
@@ -20,7 +23,7 @@ export function SortingForm() {
         className="places__sorting-type"
         tabIndex={0}
       >
-        {sortForm}
+        {sortOption}
         <svg
           className="places__sorting-arrow"
           width="7"
@@ -37,28 +40,28 @@ export function SortingForm() {
         <li
           className="places__option places__option--active"
           tabIndex={0}
-          onClick={() => setSortForm('Popular')}
+          onClick={() => dispatch(setSortOption('Popular'))}
         >
           Popular
         </li>
         <li
           className="places__option"
           tabIndex={0}
-          onClick={() => setSortForm('Price: low to high')}
+          onClick={() => dispatch(setSortOption('Price: low to high'))}
         >
           Price: low to high
         </li>
         <li
           className="places__option"
           tabIndex={0}
-          onClick={() => setSortForm('Price: high to low')}
+          onClick={() => dispatch(setSortOption('Price: high to low'))}
         >
           Price: high to low
         </li>
         <li
           className="places__option"
           tabIndex={0}
-          onClick={() => setSortForm('Top rated first')}
+          onClick={() => dispatch(setSortOption('Top rated first'))}
         >
           Top rated first
         </li>

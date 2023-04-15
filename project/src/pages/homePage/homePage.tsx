@@ -4,6 +4,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import {useEffect} from 'react';
 import {setOffers} from '../../store/actions';
 import {Offers} from '../../types/offer';
+import {sortOffers} from '../../helpers';
 
 export function HomePage() {
   const dispatch = useAppDispatch();
@@ -16,21 +17,6 @@ export function HomePage() {
   }, [city]);
 
   const currentOffers = offers.filter((offer) => offer.city.name === city);
-
-  const sortOffers = (currentOffers: Offers, sortOption: string) => {
-    if (sortOption === 'Popular') {
-      return [...currentOffers].sort((a, b) => Number(b.isPremium) - Number(a.isPremium));
-    } else if (sortOption === 'Price: low to high') {
-      return [...currentOffers].sort((a, b) => a.price - b.price);
-    } else if (sortOption === 'Price: high to low') {
-      return [...currentOffers].sort((a, b) => b.price - a.price);
-    } else if (sortOption === 'Top rated first') {
-      return [...currentOffers].sort((a, b) => a.rating + b.rating);
-    } else {
-      return currentOffers;
-    }
-  };
-
   const sortedOffers: Offers = sortOffers(currentOffers, sortOption);
   return (
     <div className="page page--gray page--main">

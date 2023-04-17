@@ -1,6 +1,8 @@
 import {Link} from 'react-router-dom';
 import {Offer} from '../../types/offer';
 import {useState} from 'react';
+import {useAppDispatch} from '../../hooks';
+import {setCurrentMarker} from '../../store/actions';
 
 type CityCardProps = {
   offer: Offer;
@@ -11,9 +13,11 @@ export function CityCard ({offer}: CityCardProps) {
   const [isPremium, setIsPremium] = useState(offer.isPremium);
   // eslint-disable-next-line
   const [onFocus, setOnFocus] = useState(0);
+  const dispatch = useAppDispatch();
 
   const onFocusHandle = () => {
     setOnFocus(offer.id);
+    dispatch(setCurrentMarker(offer.id));
   };
 
   const unFocusHandle = () => {

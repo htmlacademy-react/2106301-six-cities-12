@@ -1,4 +1,4 @@
-import {Locations, Offer} from '../../types/offer';
+import {Offer} from '../../types/offer';
 import './map.css';
 import 'leaflet/dist/leaflet.css';
 import {MapContainer, Marker, TileLayer} from 'react-leaflet';
@@ -10,10 +10,7 @@ type MapProps = {
 }
 
 export function Map({offers}: MapProps) {
-  const cityLocation: Locations = [];
   const currentMarker = useAppSelector((state) => state.currentMarker);
-
-  // offers.map((offer) => cityLocation.push(offer.location));
 
   const dusseldorf = {
     name: 'Dusseldorf',
@@ -40,9 +37,6 @@ export function Map({offers}: MapProps) {
         attribution={'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'}
         url={'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'}
       />
-      {/*{cityLocation.map((city) => (*/}
-      {/*  <Marker key={city.longitude} position={[city.latitude, city.longitude]} icon={customIcon}></Marker>*/}
-      {/*))}*/}
       {offers.map((offer) => (
         <Marker
           key={offer.id}

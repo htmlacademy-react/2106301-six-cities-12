@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {setSortOption} from "../../store/actions";
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {setSortOption} from '../../store/actions';
 
 export function SortingForm() {
   const [openDropDown, setOpenDropDown] = useState(false);
-  const dispatch = useAppDispatch()
-  const sortOption = useAppSelector((state) => state.sortOption)
+  const dispatch = useAppDispatch();
+  const sortOption = useAppSelector((state) => state.sortOption);
 
   const dropDownHandle = () => {
     setOpenDropDown(!openDropDown);

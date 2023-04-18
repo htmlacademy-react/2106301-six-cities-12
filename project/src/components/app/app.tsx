@@ -7,7 +7,7 @@ import {TemplatePage} from '../../pages/templatePage/templatePage';
 import {AppRoutes, AuthorizationStatus} from '../../consts';
 import {PrivateRoute} from '../privateRoute/privateRoute';
 import {NotFoundPage} from '../../pages/notFoundPage/notFoundPage';
-import {offers} from '../../mocks/offers';
+// import {offers} from '../../mocks/offers';
 
 
 function App(): JSX.Element {
@@ -16,13 +16,13 @@ function App(): JSX.Element {
     <Routes>
       <Route path={AppRoutes.Main} element={<TemplatePage/>}>
         <Route path={AppRoutes.Main} element={<HomePage/>}/>
-        <Route path={AppRoutes.Room} element={<OfferPage offers={offers}/>}/>
+        <Route path={AppRoutes.Room} element={<OfferPage/>}/>
         <Route path={AppRoutes.NotFound} element={<NotFoundPage/>}/>
         <Route
           path={AppRoutes.Favorites}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <FavoritesPage offers={offers}/>
+              <FavoritesPage/>
             </PrivateRoute>
           }
         />

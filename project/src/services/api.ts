@@ -1,5 +1,5 @@
-import axios, {AxiosRequestConfig} from "axios";
-import {getToken} from "./token";
+import axios, {AxiosRequestConfig} from 'axios';
+import {getToken} from './token';
 
 const BACKAND_URL = 'https://12.react.pages.academy/six-cities';
 const REQUEST_TIMEOUT = 5000;
@@ -12,17 +12,14 @@ export const createApi = () => {
 
   api.interceptors.request.use(
     (config: AxiosRequestConfig) => {
-      const token = getToken()
+      const token = getToken();
       if(token && config.headers) {
         config.headers['x-token'] = token;
       }
 
       return config;
     }
-  )
+  );
 
   return api;
-}
-
-
-
+};

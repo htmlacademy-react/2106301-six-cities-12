@@ -9,3 +9,5 @@ export const setCurrentMarker = createAction<number>('setCurrentMarker');
 export const isOffersLoad = createAction<boolean>('isOffersLoad');
 
 export const isAuth = createAction<string>('isAuth');
+
+export const setError = createAction<string | null>('setError');

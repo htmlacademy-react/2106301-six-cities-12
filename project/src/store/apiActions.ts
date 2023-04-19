@@ -4,13 +4,12 @@ import {AxiosInstance} from 'axios';
 import {Offers} from '../types/offer';
 import {APIRoute, AuthorizationStatus} from '../consts';
 import {isAuth, isOffersLoad, setOffers} from './actions';
-import {api} from "./index";
 
 export const fetchGetOffersList = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
   extra: AxiosInstance;
 }>(
-  'setOffers',
+  'setError',
   async (arg, {dispatch, extra: api}) => {
     dispatch(isOffersLoad(true));
     const {data} = await api.get<Offers>(APIRoute.Offers);
@@ -32,4 +31,5 @@ export const fetchAuthStatus = createAsyncThunk<void, undefined, {
       dispatch(isAuth(AuthorizationStatus.NoAuth));
     }
   }
-)
+);
+

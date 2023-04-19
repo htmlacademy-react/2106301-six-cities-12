@@ -7,8 +7,6 @@ import {TemplatePage} from '../../pages/templatePage/templatePage';
 import {AppRoutes, AuthorizationStatus} from '../../consts';
 import {PrivateRoute} from '../privateRoute/privateRoute';
 import {NotFoundPage} from '../../pages/notFoundPage/notFoundPage';
-// import {offers} from '../../mocks/offers';
-
 
 function App(): JSX.Element {
 

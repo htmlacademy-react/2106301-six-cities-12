@@ -7,3 +7,5 @@ export const setSortOption = createAction<string>('setSortOption');
 export const setCurrentMarker = createAction<number>('setCurrentMarker');
 
 export const isOffersLoad = createAction<boolean>('isOffersLoad');
+
+export const isAuth = createAction<string>('isAuth');

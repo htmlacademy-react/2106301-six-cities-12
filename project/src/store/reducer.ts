@@ -1,6 +1,7 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {isOffersLoad, setCity, setCurrentMarker, setOffers, setSortOption} from './actions';
+import {isAuth, isOffersLoad, setCity, setCurrentMarker, setOffers, setSortOption} from './actions';
 import {Offers} from '../types/offer';
+import {AuthorizationStatus} from '../consts';
 
 export type InitialStateTypes = {
   city: string;
@@ -8,6 +9,7 @@ export type InitialStateTypes = {
   sortOption: string;
   currentMarker: number;
   isOffersLoad: boolean;
+  authorizationStatus: string;
 };
 
 const initialState: InitialStateTypes = {
@@ -15,7 +17,8 @@ const initialState: InitialStateTypes = {
   offers: [],
   sortOption: 'Popular',
   currentMarker: 0,
-  isOffersLoad: false
+  isOffersLoad: false,
+  authorizationStatus: AuthorizationStatus.Unknown
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -34,5 +37,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(isOffersLoad, (state, action) => {
       state.isOffersLoad = action.payload;
+    })
+    .addCase(isAuth, (state , action) => {
+      state.authorizationStatus = action.payload;
     });
 });

@@ -5,3 +5,5 @@ export const setCity = createAction<string>('setCity');
 export const setOffers = createAction<Offers>('setOffers');
 export const setSortOption = createAction<string>('setSortOption');
 export const setCurrentMarker = createAction<number>('setCurrentMarker');
+
+export const isOffersLoad = createAction<boolean>('isOffersLoad');

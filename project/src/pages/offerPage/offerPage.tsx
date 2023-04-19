@@ -1,15 +1,12 @@
 import {useParams} from 'react-router-dom';
-import {Offer} from '../../types/offer';
 import {ReviewOfferForm} from '../../components/reviewOfferForm/reviewOfferForm';
 import {ReviewList} from '../../components/reviewList/reviewList';
 import {Map} from '../../components/map/map';
 import {NearPlacesList} from '../../components/nearPlacesList/nearPlacesList';
+import {useAppSelector} from '../../hooks';
 
-type OfferPageProps = {
-  offers: Offer[];
-}
-
-export function OfferPage({offers}: OfferPageProps) {
+export function OfferPage() {
+  const offers = useAppSelector((state) => state.offers);
   const roomNumber = useParams();
   const filterRoom = offers.filter((offer) => offer.id.toString() === roomNumber.id);
   const mainRoom = filterRoom[0];

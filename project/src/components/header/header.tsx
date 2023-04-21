@@ -1,9 +1,17 @@
 import {Link} from 'react-router-dom';
 import {AppRoutes, AuthorizationStatus} from '../../consts';
-import {useAppSelector} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {fetchAuthStatus, fetchLogOut} from '../../store/apiActions';
 
 export function Header() {
   const auth = useAppSelector((state) => state.authorizationStatus);
+  const user = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+
+  const logOut = () => {
+    dispatch(fetchLogOut());
+    dispatch(fetchAuthStatus());
+  };
 
   const notLog = () => (
     <li className="header__nav-item">
@@ -17,14 +25,17 @@ export function Header() {
     <>
       <li className="header__nav-item user">
         <Link to={AppRoutes.Favorites} className="header__nav-link header__nav-link--profile">
-          <div className="header__avatar-wrapper user__avatar-wrapper">
-          </div>
-          <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+          <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+          <span className="header__user-name user__name">{user?.email}</span>
           <span className="header__favorite-count">3</span>
         </Link>
       </li>
       <li className="header__nav-item">
-        <Link to={AppRoutes.Main} className="header__nav-link">
+        <Link
+          to={AppRoutes.Main}
+          className="header__nav-link"
+          onClick={logOut}
+        >
           <span className="header__signout">Sign out</span>
         </Link>
       </li>

@@ -1,7 +1,47 @@
 import {Link} from 'react-router-dom';
-import {AppRoutes} from '../../consts';
+import {AppRoutes, AuthorizationStatus} from '../../consts';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {fetchAuthStatus, fetchLogOut} from '../../store/apiActions';
 
-export function Header () {
+export function Header() {
+  const auth = useAppSelector((state) => state.authorizationStatus);
+  const user = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+
+  const logOut = () => {
+    dispatch(fetchLogOut());
+    dispatch(fetchAuthStatus());
+  };
+
+  const notLog = () => (
+    <li className="header__nav-item">
+      <Link to={AppRoutes.Login} className="header__nav-link">
+        <span className="header__signout">Sign in</span>
+      </Link>
+    </li>
+  );
+
+  const log = () => (
+    <>
+      <li className="header__nav-item user">
+        <Link to={AppRoutes.Favorites} className="header__nav-link header__nav-link--profile">
+          <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+          <span className="header__user-name user__name">{user?.email}</span>
+          <span className="header__favorite-count">3</span>
+        </Link>
+      </li>
+      <li className="header__nav-item">
+        <Link
+          to={AppRoutes.Main}
+          className="header__nav-link"
+          onClick={logOut}
+        >
+          <span className="header__signout">Sign out</span>
+        </Link>
+      </li>
+    </>
+  );
+
   return (
     <header className="header">
       <div className="container">
@@ -13,19 +53,7 @@ export function Header () {
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
-              <li className="header__nav-item user">
-                <Link to={AppRoutes.Favorites} className="header__nav-link header__nav-link--profile">
-                  <div className="header__avatar-wrapper user__avatar-wrapper">
-                  </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  <span className="header__favorite-count">3</span>
-                </Link>
-              </li>
-              <li className="header__nav-item">
-                <Link to={AppRoutes.Main} className="header__nav-link">
-                  <span className="header__signout">Sign out</span>
-                </Link>
-              </li>
+              {auth === AuthorizationStatus.NoAuth && AuthorizationStatus.Unknown ? notLog() : log()}
             </ul>
           </nav>
         </div>

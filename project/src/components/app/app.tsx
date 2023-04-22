@@ -4,11 +4,9 @@ import {LoginPage} from '../../pages/loginPage/loginPage';
 import {OfferPage} from '../../pages/offerPage/offerPage';
 import {FavoritesPage} from '../../pages/favoritesPage/favoritesPage';
 import {TemplatePage} from '../../pages/templatePage/templatePage';
-import {AppRoutes, AuthorizationStatus} from '../../consts';
+import {AppRoutes} from '../../consts';
 import {PrivateRoute} from '../privateRoute/privateRoute';
 import {NotFoundPage} from '../../pages/notFoundPage/notFoundPage';
-// import {offers} from '../../mocks/offers';
-
 
 function App(): JSX.Element {
 
@@ -21,7 +19,7 @@ function App(): JSX.Element {
         <Route
           path={AppRoutes.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <PrivateRoute>
               <FavoritesPage/>
             </PrivateRoute>
           }

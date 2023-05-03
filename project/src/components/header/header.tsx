@@ -1,8 +1,9 @@
 import {Link} from 'react-router-dom';
 import {AppRoutes, AuthorizationStatus} from '../../consts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {fetchAuthStatus, fetchLogOut} from '../../store/api-actions';
+import {fetchLogOut} from '../../store/api-actions';
 import {getAuthStatus, getUser} from '../../store/user-process/user-process.selectors';
+import {setNoAuthStatus} from '../../store/user-process/user-process';
 
 export function Header() {
   const auth = useAppSelector(getAuthStatus);
@@ -11,7 +12,7 @@ export function Header() {
 
   const logOut = () => {
     dispatch(fetchLogOut());
-    dispatch(fetchAuthStatus());
+    dispatch(setNoAuthStatus);
   };
 
   const notLog = () => (

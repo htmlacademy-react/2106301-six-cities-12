@@ -4,7 +4,7 @@ import App from './components/app/app';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {store} from './store';
-import {fetchAuthStatus} from './store/apiActions';
+import {fetchAuthStatus} from './store/api-actions';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

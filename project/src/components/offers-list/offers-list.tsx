@@ -1,8 +1,8 @@
-import {CityCard} from '../cityCard/cityCard';
+import {CityCard} from '../city-card/city-card';
 import React from 'react';
 import {Map} from '../map/map';
 import {Offers} from '../../types/offer';
-import {SortingForm} from '../sortingFom/sortingForm';
+import {SortingForm} from '../sorting-form/sorting-form';
 
 type CityListProps = {
   city: string;

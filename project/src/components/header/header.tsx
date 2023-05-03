@@ -1,16 +1,18 @@
 import {Link} from 'react-router-dom';
 import {AppRoutes, AuthorizationStatus} from '../../consts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {fetchAuthStatus, fetchLogOut} from '../../store/apiActions';
+import {fetchLogOut} from '../../store/api-actions';
+import {getAuthStatus, getUser} from '../../store/user-process/user-process.selectors';
+import {setNoAuthStatus} from '../../store/user-process/user-process';
 
 export function Header() {
-  const auth = useAppSelector((state) => state.authorizationStatus);
-  const user = useAppSelector((state) => state.user);
+  const auth = useAppSelector(getAuthStatus);
+  const user = useAppSelector(getUser);
   const dispatch = useAppDispatch();
 
   const logOut = () => {
     dispatch(fetchLogOut());
-    dispatch(fetchAuthStatus());
+    dispatch(setNoAuthStatus);
   };
 
   const notLog = () => (
@@ -53,7 +55,7 @@ export function Header() {
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
-              {auth === AuthorizationStatus.NoAuth && AuthorizationStatus.Unknown ? notLog() : log()}
+              {auth === AuthorizationStatus.Unknown ? notLog() : log()}
             </ul>
           </nav>
         </div>

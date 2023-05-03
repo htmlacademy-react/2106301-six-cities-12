@@ -4,13 +4,15 @@ import 'leaflet/dist/leaflet.css';
 import {MapContainer, Marker, TileLayer} from 'react-leaflet';
 import {Icon} from 'leaflet';
 import {useAppSelector} from '../../hooks';
+import {getCurrentMarker} from '../../store/offers-list/offers-list.selectors';
+import {URL_MARKER_CURRENT, URL_MARKER_DEFAULT} from '../../consts';
 
 type MapProps = {
   offers: Offer[];
 }
 
 export function Map({offers}: MapProps) {
-  const currentMarker = useAppSelector((state) => state.currentMarker);
+  const currentMarker = useAppSelector(getCurrentMarker);
 
   const dusseldorf = {
     name: 'Dusseldorf',
@@ -22,12 +24,12 @@ export function Map({offers}: MapProps) {
   };
 
   const customIcon = new Icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/2494/2494112.png',
+    iconUrl: URL_MARKER_DEFAULT,
     iconSize: [38, 38]
   });
 
   const activeMarker = new Icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/831/831896.png',
+    iconUrl: URL_MARKER_CURRENT,
     iconSize: [38, 38]
   });
 

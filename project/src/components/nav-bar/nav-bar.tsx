@@ -1,9 +1,10 @@
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {setCity} from '../../store/actions';
+import {setCity} from '../../store/offers-list/offers-list';
+import {getCity} from '../../store/offers-list/offers-list.selectors';
 
 export function NavBar() {
   const dispatch = useAppDispatch();
-  const city = useAppSelector((state) => state.city);
+  const city = useAppSelector(getCity);
 
   return (
     <div className="tabs">
@@ -12,7 +13,7 @@ export function NavBar() {
           <li className="locations__item">
             <span
               className={city === 'Paris' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
-              onClick={(event) => dispatch(setCity('Paris'))}
+              onClick={() => dispatch(setCity('Paris'))}
             >
               Paris
             </span>
@@ -20,7 +21,7 @@ export function NavBar() {
           <li className="locations__item">
             <span
               className={city === 'Cologne' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
-              onClick={(event) => dispatch(setCity('Cologne'))}
+              onClick={() => dispatch(setCity('Cologne'))}
             >
               Cologne
             </span>
@@ -28,7 +29,7 @@ export function NavBar() {
           <li className="locations__item">
             <span
               className={city === 'Brussels' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
-              onClick={(event) => dispatch(setCity('Brussels'))}
+              onClick={() => dispatch(setCity('Brussels'))}
             >
               Brussels
             </span>
@@ -36,7 +37,7 @@ export function NavBar() {
           <li className="locations__item">
             <span
               className={city === 'Amsterdam' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
-              onClick={(event) => dispatch(setCity('Amsterdam'))}
+              onClick={() => dispatch(setCity('Amsterdam'))}
             >
               Amsterdam
             </span>
@@ -44,7 +45,7 @@ export function NavBar() {
           <li className="locations__item">
             <span
               className={city === 'Hamburg' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
-              onClick={(event) => dispatch(setCity('Hamburg'))}
+              onClick={() => dispatch(setCity('Hamburg'))}
             >
               Hamburg
             </span>
@@ -52,7 +53,7 @@ export function NavBar() {
           <li className="locations__item">
             <span
               className={city === 'Dusseldorf' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
-              onClick={(event) => dispatch(setCity('Dusseldorf'))}
+              onClick={() => dispatch(setCity('Dusseldorf'))}
             >
               Dusseldorf
             </span>

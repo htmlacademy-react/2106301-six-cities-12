@@ -1,12 +1,12 @@
-import {HomePage} from '../../pages/homePage/homePage';
+import {HomePage} from '../../pages/home-page/home-page';
 import {Route, Routes} from 'react-router-dom';
-import {LoginPage} from '../../pages/loginPage/loginPage';
-import {OfferPage} from '../../pages/offerPage/offerPage';
-import {FavoritesPage} from '../../pages/favoritesPage/favoritesPage';
-import {TemplatePage} from '../../pages/templatePage/templatePage';
+import {LoginPage} from '../../pages/login-page/login-page';
+import {OfferPage} from '../../pages/offer-page/offer-page';
+import {FavoritesPage} from '../../pages/favorites-page/favorites-page';
+import {TemplatePage} from '../../pages/template-page/template-page';
 import {AppRoutes} from '../../consts';
-import {PrivateRoute} from '../privateRoute/privateRoute';
-import {NotFoundPage} from '../../pages/notFoundPage/notFoundPage';
+import {PrivateRoute} from '../private-route/private-route';
+import {NotFoundPage} from '../../pages/not-found-page/not-found-page';
 
 function App(): JSX.Element {
 

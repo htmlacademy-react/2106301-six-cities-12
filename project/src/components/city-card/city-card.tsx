@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import {Offer} from '../../types/offer';
 import {useState} from 'react';
 import {useAppDispatch} from '../../hooks';
-import {setCurrentMarker} from '../../store/actions';
+import {setCurrentMarker} from '../../store/offers-list/offers-list';
 
 type CityCardProps = {
   offer: Offer;
@@ -57,7 +57,7 @@ export function CityCard ({offer}: CityCardProps) {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '80 %'}}></span>
+            <span style={{width:`${Math.round(offer.rating) * 20}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

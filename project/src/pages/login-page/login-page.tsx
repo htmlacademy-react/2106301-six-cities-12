@@ -2,7 +2,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import {AppRoutes} from '../../consts';
 import React, {useState} from 'react';
 import {useAppDispatch} from '../../hooks';
-import {fetchUserLogin} from '../../store/apiActions';
+import {fetchUserLogin} from '../../store/api-actions';
 
 export function LoginPage () {
   const [userData, setUserData] = useState({
@@ -14,7 +14,7 @@ export function LoginPage () {
   const onSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(fetchUserLogin(userData));
-    navigate('/');
+    navigate(AppRoutes.Main);
   };
   return (
     <div className="page page--gray page--login">

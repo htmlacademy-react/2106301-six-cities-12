@@ -31,9 +31,11 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(setOffers, (state, action) => {
       state.offers = action.payload;
     })
+    // готово
     .addCase(setSortOption, (state, action) => {
       state.sortOption = action.payload;
     })
+    // готово
     .addCase(setCurrentMarker, (state, action) => {
       state.currentMarker = action.payload;
     })

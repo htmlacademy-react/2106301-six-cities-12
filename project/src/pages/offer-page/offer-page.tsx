@@ -1,12 +1,13 @@
 import {useParams} from 'react-router-dom';
-import {ReviewOfferForm} from '../../components/reviewOfferForm/reviewOfferForm';
-import {ReviewList} from '../../components/reviewList/reviewList';
+import {ReviewOfferForm} from '../../components/review-offer-form/review-offer-form';
+import {ReviewList} from '../../components/review-list/review-list';
 import {Map} from '../../components/map/map';
-import {NearPlacesList} from '../../components/nearPlacesList/nearPlacesList';
+import {NearPlacesList} from '../../components/near-places-list/near-places-list';
 import {useAppSelector} from '../../hooks';
+import {getOffers} from '../../store/offers-list/offers-list.selectors';
 
 export function OfferPage() {
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(getOffers);
   const roomNumber = useParams();
   const filterRoom = offers.filter((offer) => offer.id.toString() === roomNumber.id);
   const mainRoom = filterRoom[0];
@@ -16,8 +17,6 @@ export function OfferPage() {
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
-            {/* TODO Допилить логику чтобы показывалось только 6 фоток */}
-            {/* TODO Не забыть убрать */}
             <div className="property__gallery">
               {mainRoom.images.map((image) => (
                 <div key={image} className="property__image-wrapper">

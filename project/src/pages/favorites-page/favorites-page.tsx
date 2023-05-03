@@ -1,9 +1,10 @@
 import {Link} from 'react-router-dom';
-import {FavoritesCard} from '../../components/favoritesCard/favoritesCard';
+import {FavoritesCard} from '../../components/favorites-card/favorites-card';
 import {useAppSelector} from '../../hooks';
+import {getOffers} from '../../store/offers-list/offers-list.selectors';
 
 export function FavoritesPage() {
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(getOffers);
   const citiesArray:string[] = [];
   offers.forEach((offer) => citiesArray.push(offer.city.name));
   const onlyCitiesNames = new Set(citiesArray);

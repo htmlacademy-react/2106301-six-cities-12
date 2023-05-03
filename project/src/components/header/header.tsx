@@ -1,11 +1,12 @@
 import {Link} from 'react-router-dom';
 import {AppRoutes, AuthorizationStatus} from '../../consts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {fetchAuthStatus, fetchLogOut} from '../../store/apiActions';
+import {fetchAuthStatus, fetchLogOut} from '../../store/api-actions';
+import {getAuthStatus, getUser} from '../../store/user-process/user-process.selectors';
 
 export function Header() {
-  const auth = useAppSelector((state) => state.authorizationStatus);
-  const user = useAppSelector((state) => state.user);
+  const auth = useAppSelector(getAuthStatus);
+  const user = useAppSelector(getUser);
   const dispatch = useAppDispatch();
 
   const logOut = () => {

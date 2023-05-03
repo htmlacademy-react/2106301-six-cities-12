@@ -38,7 +38,7 @@ export const userProcess = createSlice({
         state.authorizationStatus = AuthorizationStatus.Unknown;
       })
       .addCase(fetchLogOut.fulfilled, (state) => {
-        state.authorizationStatus = AuthorizationStatus.NoAuth;
+        state.authorizationStatus = AuthorizationStatus.Unknown;
         state.user = null;
       });
   }

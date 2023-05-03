@@ -55,7 +55,7 @@ export function Header() {
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
-              {auth === AuthorizationStatus.NoAuth && AuthorizationStatus.Unknown ? notLog() : log()}
+              {auth === AuthorizationStatus.Unknown ? notLog() : log()}
             </ul>
           </nav>
         </div>

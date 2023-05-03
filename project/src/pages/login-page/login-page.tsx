@@ -3,6 +3,7 @@ import {AppRoutes} from '../../consts';
 import React, {useState} from 'react';
 import {useAppDispatch} from '../../hooks';
 import {fetchUserLogin} from '../../store/api-actions';
+import {setCity} from '../../store/offers-list/offers-list';
 
 export function LoginPage () {
   const [userData, setUserData] = useState({
@@ -12,10 +13,15 @@ export function LoginPage () {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    dispatch(fetchUserLogin(userData));
-    navigate(AppRoutes.Main);
+    if(userData.password.length < 1) {
+      event.preventDefault();
+    } else {
+      event.preventDefault();
+      dispatch(fetchUserLogin(userData));
+      navigate(AppRoutes.Main);
+    }
   };
+
   return (
     <div className="page page--gray page--login">
       <header className="header">
@@ -73,7 +79,11 @@ export function LoginPage () {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <Link to={AppRoutes.Main} className="locations__item-link">
+              <Link
+                to={AppRoutes.Main}
+                className="locations__item-link"
+                onClick={() => dispatch(setCity('Amsterdam'))}
+              >
                 <span>Amsterdam</span>
               </Link>
             </div>

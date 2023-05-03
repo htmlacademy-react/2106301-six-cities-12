@@ -18,6 +18,16 @@ export const fetchGetOffersList = createAsyncThunk<Offers, undefined, {
   }
 );
 
+export const fetchGetFavorites = createAsyncThunk<Offers, undefined, {
+  extra: AxiosInstance;
+}>(
+  'getFavorites',
+  async (arg, {extra: api}) => {
+    const response = await api.get<Offers>(APIRoute.Favorites);
+    return response.data;
+  }
+);
+
 export const fetchAuthStatus = createAsyncThunk<User, undefined, {
   dispatch: AppDispatch;
   extra: AxiosInstance;

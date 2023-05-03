@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Offers} from '../../types/offer';
-import {fetchGetOffersList} from '../api-actions';
+import {fetchGetFavorites, fetchGetOffersList} from '../api-actions';
 import {NameSpace} from '../../consts';
 
 type InitialStateType = {
@@ -9,6 +9,7 @@ type InitialStateType = {
   sortOption: string;
   currentMarker: number;
   isOffersLoad: boolean;
+  favorites: Offers;
 }
 
 const initialState:InitialStateType = {
@@ -16,7 +17,8 @@ const initialState:InitialStateType = {
   city: 'Paris',
   sortOption: 'Popular',
   currentMarker: 0,
-  isOffersLoad: false
+  isOffersLoad: false,
+  favorites: []
 };
 export const offersData = createSlice({
   name: NameSpace.Offers,
@@ -40,6 +42,9 @@ export const offersData = createSlice({
       })
       .addCase(fetchGetOffersList.pending, (state) => {
         state.isOffersLoad = true;
+      })
+      .addCase(fetchGetFavorites.fulfilled, (state, action) => {
+        state.favorites = action.payload;
       });
   }
 });

@@ -3,7 +3,7 @@ import {OffersList} from '../../components/offers-list/offers-list';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {Offers} from '../../types/offer';
 import {sortOffers} from '../../helpers';
-import {fetchGetOffersList} from '../../store/api-actions';
+import {fetchGetFavorites, fetchGetOffersList} from '../../store/api-actions';
 import {Loader} from '../../loader/loader';
 import {useEffect} from 'react';
 import {getCity, getOffers, getOffersLoadStatus, getSortOption} from '../../store/offers-list/offers-list.selectors';
@@ -17,6 +17,7 @@ export function HomePage() {
 
   useEffect(() => {
     dispatch(fetchGetOffersList());
+    dispatch(fetchGetFavorites());
   }, [dispatch]);
 
   const currentOffers = offers.filter((offer) => offer.city.name === city);

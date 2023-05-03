@@ -1,7 +1,7 @@
-import {AuthorizationStatus} from "../consts";
-import {User} from "./user";
+import {AuthorizationStatus} from '../consts';
+import {User} from './user';
 
 export type UserProcess = {
-  authorizationStatus: AuthorizationStatus
+  authorizationStatus: AuthorizationStatus;
   user: User | null;
  }

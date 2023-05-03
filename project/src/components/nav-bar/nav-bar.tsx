@@ -13,7 +13,7 @@ export function NavBar() {
           <li className="locations__item">
             <span
               className={city === 'Paris' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'}
-              onClick={(event) => dispatch(setCity('Paris'))}
+              onClick={() => dispatch(setCity('Paris'))}
             >
               Paris
             </span>

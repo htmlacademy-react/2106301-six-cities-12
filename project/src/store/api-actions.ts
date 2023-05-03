@@ -12,7 +12,7 @@ export const fetchGetOffersList = createAsyncThunk<Offers, undefined, {
   extra: AxiosInstance;
 }>(
   'getOffers',
-  async (arg, {dispatch, extra: api}) => {
+  async (arg, {extra: api}) => {
     const response = await api.get<Offers>(APIRoute.Offers);
     return response.data;
   }
@@ -23,7 +23,7 @@ export const fetchAuthStatus = createAsyncThunk<User, undefined, {
   extra: AxiosInstance;
 }>(
   'isAuth',
-  async (arg, {dispatch, extra: api}) => {
+  async (arg, {extra: api}) => {
     const response = await api.get<User>(APIRoute.Login);
     return response.data;
   }
@@ -34,7 +34,7 @@ export const fetchUserLogin = createAsyncThunk<User, AuthData, {
   extra: AxiosInstance;
 }>(
   'userLogin',
-  async (arg, {dispatch, extra: api}) => {
+  async (arg, {extra: api}) => {
     const response = await api.post<User>(APIRoute.Login, arg);
     saveToken(response.data.token);
     return response.data;
@@ -46,7 +46,7 @@ export const fetchLogOut = createAsyncThunk<void, undefined, {
   extra: AxiosInstance;
 }>(
   'userLogOut',
-  async (arg, {dispatch, extra: api}) => {
+  async (arg, {extra: api}) => {
     await api.delete(APIRoute.LogOut);
     dropToken();
   }

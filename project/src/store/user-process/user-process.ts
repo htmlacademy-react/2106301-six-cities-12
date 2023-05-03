@@ -21,7 +21,7 @@ export const userProcess = createSlice({
       .addCase(fetchAuthStatus.pending, (state) => {
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
-      .addCase(fetchAuthStatus.fulfilled, (state, action) => {
+      .addCase(fetchAuthStatus.fulfilled, (state) => {
         state.authorizationStatus = AuthorizationStatus.Auth;
       })
       .addCase(fetchAuthStatus.rejected, (state) => {
